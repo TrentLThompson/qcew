@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: qcew
-Version: 1.0.1
+Version: 1.0.3
 Summary: A package for retrieving Quarterly Census of Employment and Wages (QCEW) data.
 Home-page: https://github.com/TrentLThompson/qcew
 Author: Trent Thompson
@@ -13,7 +13,7 @@ Classifier: Programming Language :: Python :: 3.10
 Classifier: Programming Language :: Python :: 3.11
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
-Requires-Python: >=3.8
+Requires-Python: >= 3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
@@ -55,6 +55,7 @@ data = qcew.get_qcew_data_slice(
         "own_code",
         "industry_code",
         "year",
+        "disclosure_code",
         "annual_avg_emplvl",
         "avg_annual_pay"
         ]
@@ -75,6 +76,7 @@ data = qcew.get_qcew_data_slice(
         "industry_code",
         "year",
         "qtr",
+        "disclosure_code",
         "month1_emplvl",
         "month2_emplvl",
         "month3_emplvl"
@@ -94,6 +96,7 @@ data = qcew.get_qcew_data_slice(
         "own_code",
         "industry_code",
         "year",
+        "disclosure_code",
         "annual_avg_emplvl",
         "avg_annual_pay"
         ]
