@@ -1,7 +1,7 @@
 from setuptools import setup
 from pathlib import Path
 
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 DESCRIPTION = "A package for retrieving Quarterly Census of Employment and Wages (QCEW) data."
 
 setup(
