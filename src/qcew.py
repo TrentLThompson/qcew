@@ -5,7 +5,10 @@ from urllib.request import urlopen
 from zipfile import ZipFile
 
 
-FIELD_TYPES = { # This is a type lookup for all QCEW data fields.
+FIELD_TYPES = { 
+    # This is a type lookup for all QCEW data fields. For more information see:
+    # https://www.bls.gov/cew/about-data/downloadable-file-layouts/quarterly/naics-based-quarterly-layout.htm
+    # https://www.bls.gov/cew/about-data/downloadable-file-layouts/annual/naics-based-annual-layout.htm
     "annual_avg_emplvl": int,
     "annual_avg_estabs_count": int,
     "annual_avg_wkly_wage": int,
@@ -110,7 +113,9 @@ def slice_qcew(area_slice: bool, qcew_codes: list, year: str, annual_data: bool=
         True for annual-interval data. False for quarterly-interval data. Defaults to True.
     `fields`: list[str] or None (default: None)
         Names of fields to keep. Use None if keeping all fields. Defaults to None. NOTE: Specifying 
-        fields will decrease memory usage and improve performance.
+        fields will decrease memory usage and improve performance. Quarterly fields can be found at:
+        https://www.bls.gov/cew/about-data/downloadable-file-layouts/quarterly/naics-based-quarterly-layout.htm
+        Annual fields can be found at: https://www.bls.gov/cew/about-data/downloadable-file-layouts/annual/naics-based-annual-layout.htm
 
     ### Returns
     list[dict] : A slice of QCEW data.
@@ -189,8 +194,10 @@ def get_qcew_data_slice(area_slice: bool, qcew_codes: list, years: list, annual_
     `annual_data` : bool (default: True)
         True for annual-interval data. False for quarterly-interval data. Defaults to True.
     `fields`: str or None (default: None)
-        Names of fields to keep. Use None if keeping all fields. Specifying fields will improve
-        performance. Defaults to None.
+        Names of fields to keep. Use None if keeping all fields. Defaults to None. NOTE: Specifying 
+        fields will decrease memory usage and improve performance. Quarterly fields can be found at:
+        https://www.bls.gov/cew/about-data/downloadable-file-layouts/quarterly/naics-based-quarterly-layout.htm
+        Annual fields can be found at: https://www.bls.gov/cew/about-data/downloadable-file-layouts/annual/naics-based-annual-layout.htm
 
     ### Returns
     list[dict] : A slice of QCEW data.
@@ -226,8 +233,10 @@ def get_qcew_data(year: str, annual: bool=True, fields: Union[list, None]=None) 
     `annual` : bool (default: True)
         True for annual data. False for quarterly data. Defaults to True.
     `fields`: str or None (default: None)
-        Names of fields to keep. Use None if keeping all fields. However, specifying fields will 
-        improve performance. Defaults to None.
+        Names of fields to keep. Use None if keeping all fields. Defaults to None. NOTE: Specifying 
+        fields will decrease memory usage and improve performance. Quarterly fields can be found at:
+        https://www.bls.gov/cew/about-data/downloadable-file-layouts/quarterly/naics-based-quarterly-layout.htm
+        Annual fields can be found at: https://www.bls.gov/cew/about-data/downloadable-file-layouts/annual/naics-based-annual-layout.htm
 
     ### Returns
     list[dict] : Annual or quarterly QCEW data for a single year.
