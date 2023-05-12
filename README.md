@@ -71,7 +71,7 @@ data = qcew.get_qcew_data_slice(
         "31-33", # NAICS code for manufacturing sector.
         ],
     years=[str(i) for i in range(2010, 2021)],
-    annual_data=False,
+    annual_data=True,
     fields=[
         "area_fips",
         "own_code",
