@@ -36,6 +36,7 @@ data = qcew.get_qcew_data_slice(
         "own_code",
         "industry_code",
         "year",
+        "disclosure_code",
         "annual_avg_emplvl",
         "avg_annual_pay"
         ]
@@ -56,6 +57,7 @@ data = qcew.get_qcew_data_slice(
         "industry_code",
         "year",
         "qtr",
+        "disclosure_code",
         "month1_emplvl",
         "month2_emplvl",
         "month3_emplvl"
@@ -75,6 +77,7 @@ data = qcew.get_qcew_data_slice(
         "own_code",
         "industry_code",
         "year",
+        "disclosure_code",
         "annual_avg_emplvl",
         "avg_annual_pay"
         ]
