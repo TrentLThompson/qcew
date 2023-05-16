@@ -1,8 +1,8 @@
 from concurrent.futures import ProcessPoolExecutor
 from io import BytesIO
 from typing import Union
+from urllib.request import urlopen
 from zipfile import ZipFile
-import requests
 
 
 FIELD_TYPES = { 
@@ -123,14 +123,14 @@ def get_qcew_data(year: str, annual: bool=False, fields: Union[list, None]=None)
     url = f"https://data.bls.gov/cew/data/files/{year}/csv/{year}_{interval}_singlefile.zip"
     
     try:
-        response = requests.get(url)
+        response = urlopen(url)
     except:
         raise ValueError((
             f'Cannot find URL: "{url}". These data may have not yet been published by BLS. For more'
             ' information, please see: https://www.bls.gov/cew/downloadable-data-files.htm.'
         ))
     else:
-        zip = ZipFile(BytesIO(response.content), "r")
+        zip = ZipFile(BytesIO(response.read()), "r")
         qcew_data = []
         with zip.open(zip.namelist()[0]) as input:
             field_names = parse_line(input.readline()) # Parse first line, which contains field names.
@@ -229,14 +229,14 @@ def slice_qcew(slice_type: str, qcew_codes: list, year: str, annual_data: bool=F
             url = f"https://data.bls.gov/cew/data/files/{year}/csv/{year}_{interval}_by_{slice_type}.zip"
 
     try:
-        response = requests.get(url)
+        response = urlopen(url)
     except:
         raise ValueError((
             f'Cannot find URL: "{url}". These data may have not yet been published by BLS. For more'
             ' information, please see: https://www.bls.gov/cew/downloadable-data-files.htm.'
         ))
     else:
-        zip = ZipFile(BytesIO(response.content), "r")
+        zip = ZipFile(BytesIO(response.read()), "r")
         
         files, codes_without_data = [], []
         if slice_type == "size":
