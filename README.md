@@ -27,7 +27,7 @@ data = qcew.get_qcew_data(
 
 # Get annual average employment and pay data for the United States from 2001 to 2021.
 data = qcew.get_qcew_data_slice(
-    area_slice=True,
+    slice_type="area",
     qcew_codes=["US000"],
     years=[str(i) for i in range(2001, 2022)],
     annual_data=True,
@@ -44,7 +44,7 @@ data = qcew.get_qcew_data_slice(
 
 # Get monthly employment data for the state of Hawaii as well as Honolulu County, HI in 2020.
 data = qcew.get_qcew_data_slice(
-    area_slice=True,
+    slice_type="area",
     qcew_codes=[
         "15000", # Hawaii -- Statewide
         "15003", # Honolulu County, HI
@@ -66,7 +66,7 @@ data = qcew.get_qcew_data_slice(
 
 # Get annual average employment and pay data for the manufacturing sector as a whole from 2010 to 2020.
 data = qcew.get_qcew_data_slice(
-    area_slice=False,
+    slice_type="industry",
     qcew_codes=[
         "31-33", # NAICS code for manufacturing sector.
         ],
@@ -80,6 +80,27 @@ data = qcew.get_qcew_data_slice(
         "disclosure_code",
         "annual_avg_emplvl",
         "avg_annual_pay"
+        ]
+    )
+
+# Get monthly employment data for establishments with fewer than 5 employees in the first quarter of 2021.
+data = qcew.get_qcew_data_slice(
+    slice_type="size",
+    qcew_codes=[
+        "1", # Size code for establishments with fewer than 5 employees.
+        ],
+    years=["2021"],
+    annual_data=False,
+    fields=[
+        "area_fips",
+        "own_code",
+        "industry_code",
+        "year",
+        "qtr",
+        "disclosure_code",
+        "month1_emplvl",
+        "month2_emplvl",
+        "month3_emplvl"
         ]
     )
 ```
