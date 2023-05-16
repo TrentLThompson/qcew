@@ -95,6 +95,7 @@ data = qcew.get_qcew_data_slice(
         "area_fips",
         "own_code",
         "industry_code",
+        "size_code",
         "year",
         "qtr",
         "disclosure_code",
